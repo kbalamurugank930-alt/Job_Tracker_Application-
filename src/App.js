@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import JobForm from "./components/JobForm";
+import JobList from "./components/JobList";
+import './App.css'
 
 function App() {
+  const [reload, setReload] = useState(false); // toggle to reload JobList
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h1>Job Application Tracker</h1>
+      <JobForm onAdd={() => setReload(!reload)} />
+      <JobList key={reload} />
     </div>
   );
 }
